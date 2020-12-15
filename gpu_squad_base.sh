@@ -2,16 +2,16 @@
 
 #### local path
 SQUAD_DIR=data/squad
-INIT_CKPT_DIR=xlnet_cased_L-12_H-768_A-12
+INIT_CKPT_DIR=xlnet_cased_L-24_H-1024_A-16
 PROC_DATA_DIR=proc_data/squad
 MODEL_DIR=experiment/squad
 
 #### Use 3 GPUs, each with 8 seqlen-512 samples
 
-python run_squad.py \
+python2 run_squad_GPU.py \
   --use_tpu=False \
   --num_hosts=1 \
-  --num_core_per_host=3 \
+  --num_core_per_host=1 \
   --model_config_path=${INIT_CKPT_DIR}/xlnet_config.json \
   --spiece_model_file=${INIT_CKPT_DIR}/spiece.model \
   --output_dir=${PROC_DATA_DIR} \
@@ -20,9 +20,9 @@ python run_squad.py \
   --train_file=${SQUAD_DIR}/train-v2.0.json \
   --predict_file=${SQUAD_DIR}/dev-v2.0.json \
   --uncased=False \
-  --max_seq_length=512 \
+  --max_seq_length=192 \
   --do_train=True \
-  --train_batch_size=8 \
+  --train_batch_size=4 \
   --do_predict=True \
   --predict_batch_size=32 \
   --learning_rate=2e-5 \
@@ -31,4 +31,6 @@ python run_squad.py \
   --save_steps=1000 \
   --train_steps=12000 \
   --warmup_steps=1000 \
+  --number_of_active_layer=14 \
+  --fc_layers_option=0 \
   $@

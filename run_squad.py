@@ -40,7 +40,7 @@ SEG_ID_PAD = 3
 # Preprocessing
 flags.DEFINE_bool("do_prepro", default=False,
       help="Perform preprocessing only.")
-flags.DEFINE_integer("num_proc", default=1,
+flags.DEFINE_integer("num_proc", default=16,
       help="Number of preprocessing processes.")
 flags.DEFINE_integer("proc_id", default=0,
       help="Process id for preprocessing.")
@@ -125,7 +125,7 @@ flags.DEFINE_integer("warmup_steps", default=0, help="number of warmup steps")
 flags.DEFINE_integer("save_steps", default=None,
                      help="Save the model for every save_steps. "
                      "If None, not to save any model.")
-flags.DEFINE_integer("max_save", default=5,
+flags.DEFINE_integer("max_save", default=0,
                      help="Max number of checkpoints to save. "
                      "Use 0 to save all.")
 flags.DEFINE_integer("shuffle_buffer", default=2048,
@@ -142,6 +142,9 @@ flags.DEFINE_string("decay_method", default="poly", help="poly or cos")
 flags.DEFINE_float("lr_layer_decay_rate", default=0.75,
                    help="Top layer: lr[L] = FLAGS.learning_rate."
                    "Lower layers: lr[l-1] = lr[l] * lr_layer_decay_rate.")
+flags.DEFINE_integer('number_of_active_layer', default=12, help='Active layer count')
+flags.DEFINE_integer('fc_layers_option', default=0,
+                     help="0: default config, 1: 1024 -> 1 start/end, 2: 1024 -> 1 cls, 3: 1024 -> 1 start/end/cls")
 
 # Eval / Prediction
 flags.DEFINE_bool("do_predict", default=False, help="whether to do predict")

@@ -15,7 +15,7 @@ python run_squad.py \
   --train_file=${SQUAD_DIR}/train-v2.0.json \
   --output_dir=${GS_PROC_DATA_DIR} \
   --uncased=False \
-  --max_seq_length=512 \
+  --max_seq_length=192 \
   $@
 
 #### Potential multi-processing version
@@ -28,7 +28,7 @@ python run_squad.py \
 #     --train_file=${SQUAD_DIR}/train-v2.0.json \
 #     --output_dir=${GS_PROC_DATA_DIR} \
 #     --uncased=False \
-#     --max_seq_length=512 \
+#     --max_seq_length=192 \
 #     --num_proc=${NUM_PROC} \
 #     --proc_id=${i} \
 #     $@ &
