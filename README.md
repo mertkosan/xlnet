@@ -10,7 +10,7 @@ from the [original repository](https://github.com/zihangdai/xlnet).
 We reduce batch size from 8 to 4. We do sensitivity analysis on different sequence length, partial
 fine-tuning and output layer structure by optimizing them under limited computational power and memory.
 
-Please check our [slides] (deliverables/slides.pdf) (based on XLNet's original authors' NeurIPS'19 slides) and [report] (deliverables/report.pdf)
+Please check our [slides](deliverables/slides.pdf) (based on XLNet's original authors' NeurIPS'19 slides) and [report](deliverables/report.pdf)
 about our contribution and explanation of the experiments we have conducted.
 
 ## How to Run
